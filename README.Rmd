@@ -2,7 +2,7 @@
 title: "SqueakR on Swirl"
 author: "Simon Ogundare"
 date: "`r Sys.Date()`"
-output: html_document
+output: github_document
 ---
 
 ```{r setup, include=FALSE}
@@ -32,5 +32,7 @@ swirl::install_course("SqueakR On Swirl")
 ### Website
 
 SqueakR Website: https://osimon81.github.io/SqueakR/index.html
+
 SqueakR GitHub: https://github.com/osimon81/SqueakR/
+
 Swirl Courses: https://github.com/swirldev/swirl_courses
