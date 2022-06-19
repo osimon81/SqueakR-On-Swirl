@@ -1,0 +1,24 @@
+- Class: meta
+  Course: Using SqueakR
+  Lesson: The Experiment Object
+  Author: Simon Ogundare
+  Type: Standard
+  Organization: Columbia University
+  Version: 2.4.5
+
+- Class: text
+  Output: Welcome to SqueakR on Swirl! This course is designed to equip researchers
+with an understanding of how the SqueakR suite can be used for research, data
+exploration, and analysis.
+
+SqueakR is officially a package which serves as an experiment interface for
+pre-processing, cleaning, and analyzing DeepSqueak data for bioacoustics
+projects. However, loosely, SqueakR also represents a suite of additional
+programs (like this Swirl course!) which can be used to supplement the main
+package.
+
+While there is extensive documentation on how to use the package, most of which
+can be found online, this interactive course is designed with the novice R-user
+in mind. Working through how these functions work in an interactive manner will
+help users discover how to leverage the SqueakR suite for producing and running
+more efficient, more organized experiments.

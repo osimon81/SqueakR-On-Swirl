@@ -1,0 +1,107 @@
+- Class: meta
+  Course: SqueakR On Swirl
+  Lesson: Introduction
+  Author: Simon Ogundare
+  Type: Standard
+  Organization: Columbia University
+  Version: 2.4.5
+
+- Class: text
+  Output: Welcome to SqueakR on Swirl! This course is designed to equip researchers
+    with an understanding of how the SqueakR suite can be used for research, data
+    exploration, and analysis. SqueakR is officially a package which serves as an
+    experiment interface for pre-processing, cleaning, and analyzing DeepSqueak data
+    for bioacoustics research. However, SqueakR also loosely represents a suite of
+    additional programs (like this Swirl course!) which can be used to supplement the
+    main package.
+    
+- Class: text
+  Output: While there is extensive documentation on how to use the package,
+    most of which can be found online, this interactive course is designed with the
+    novice R-user in mind. Working through how these functions work in an interactive
+    manner will help users discover how to leverage the SqueakR suite for producing
+    and running more efficient, organized, and reproducible experiments.
+
+- Class: text
+  Output: The primary functions for the SqueakR suite depend on the SqueakR package, which
+    is published both on CRAN (the official repository for R packages) and GitHub.
+    While there are many differences between CRAN and GitHub, there are a few key
+    differences when considering which version of SqueakR to download.
+    
+- Class: text
+  Output: (CRAN) Packages published on CRAN are subject to peer-review to ensure quality.
+    The CRAN version of SqueakR is typically more stable, and may be a version or
+    two behind GitHub's release. However, CRAN releases are unlikely to throw
+    errors due to this. To install SqueakR from CRAN, type install.packages("SqueakR").
+    
+    
+- Class: text
+  Output: (GitHub) SqueakR is usually updated on GitHub more often, and as a result may
+    temporarily have more features than CRAN releases, until these changes are
+    pushed to CRAN as well. As a result, GitHub builds can be more experimental, and
+    is slightly more likely to throw errors.
+    
+- Class: text
+  Output: To install SqueakR from GitHub, type install_github("osimon81/SqueakR"). When
+    this function is typically run, you would need to install the "devtools" library.
+    But for this lesson, let's stick to CRAN.
+
+- Class: cmd_question
+  Output: Install SqueakR from CRAN in the console below...
+  CorrectAnswer: install.packages("SqueakR")
+  AnswerTests: omnitest(correctExpr='install.packages("SqueakR")')
+  Hint: install.packages("PACKAGE NAME") is typically used to install CRAN packages.
+  
+- Class: cmd_question
+  Output: Once the package is loaded, we'll want to load it into our workspace.
+    This can be done using library(SqueakR). Let's run this function below...
+  CorrectAnswer: library(SqueakR)
+  AnswerTests: omnitest(correctExpr='library(SqueakR)')
+  Hint: Use library(PACKAGE NAME) to load the package.
+  
+- Class: cmd_question
+  Output: Now that we've loaded SqueakR, we can learn more about it by calling
+    '?SqueakR'. Later on, we can use the '?' operator to request documentation
+    for unfamiliar functions, which will be loaded directly in R. Let's use
+    this operator to pull up the description for SqueakR...
+  CorrectAnswer: ?SqueakR
+  AnswerTests: omnitest(correctExpr='?SqueakR')
+  Hint: Run `?SqueakR` in the console.
+  
+- Class: text
+  Output: Let's look at another way of accessing documentation. When you're
+    running experiments using SqueakR in the future, you'll want to figure out
+    which version to download (the CRAN release or the GitHub release).
+
+- Class: text
+  Output: It can be helpful to first check out the changelog to figure out
+    which features are available for a given release of SqueakR, so you can
+    download the appropriate release for your experiment.
+    
+- Class: text
+  Output: On the other hand, if you're somewhat daring, it's also helpful to
+    check out the GitHub releases to help us check for bugs on our end!
+    
+- Class: video
+  Output: The URL below links to the SqueakR website, which contains complete documentation
+    on how to use the package, as well as the changelog. Feel free to read through
+    this website, or use it as a reference while we work through the functions of
+    this package.
+  VideoLink: https://osimon81.github.io/SqueakR/index.html
+
+- Class: text
+  Output: Great job! You're almost there. Let's review what we've learned.
+  
+- Class: mult_question
+  Output: If you wanted to use a SqueakR release which had experimental features
+    not yet available on the typical location for the stable release, where and
+    how would you download that package?
+  AnswerChoices: CRAN, install.packages();GitHub, install.packages();
+    CRAN, install_github();GitHub, install_github()
+  CorrectAnswer: GitHub, install_github()
+  AnswerTests: omnitest(correctVal='GitHub, install_github()')
+  Hint: Where are you more likely to find experimental features?
+
+- Class: text
+  Output: You did great! Let's move on.
+

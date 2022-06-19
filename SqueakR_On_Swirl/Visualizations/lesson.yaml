@@ -1,0 +1,101 @@
+- Class: meta
+  Course: SqueakR On Swirl
+  Lesson: Visualizations
+  Author: Simon Ogundare
+  Type: Standard
+  Organization: Columbia University
+  Version: 2.4.5
+
+- Class: video
+  Output: We're not going to go over all the visualizations you can plot in this package
+    (since there are so many!) but you can visit the SqueakR website to find the
+    entire set of them (and their functions) in the `Get Started` page...
+  VideoLink: https://osimon81.github.io/SqueakR/articles/SqueakR.html
+
+
+- Class: text
+  Output: Now that you've done the hard part (subsetting, scoring, and adding the data),
+    we can have some fun with the visualizations! Let's try plotting an ethnogram,
+    which shows the frequency of a behavior by using a vertical line to indicate a
+    call.
+
+- Class: cmd_question
+  Output: Run plotEthnogram(experiment$experimental_data[1]$call_data$raw) to plot the first
+    dataset (remember, our beforedrug dataset) as an ethnogram...
+  CorrectAnswer: plotEthnogram(experiment$experimental_data[1]$call_data$raw)
+  AnswerTests: omnitest(correctExpr='plotEthnogram(experiment$experimental_data[1]$call_data$raw)')
+  Hint: Run `plotEthnogram(experiment$experimental_data[1]$call_data$raw)` in the console
+
+- Class: text
+  Output: Since this is the first time we're seeing the $ operator together, let's dive into
+    what it means. As you may be able to deduce, it allows us to probe deeper into a
+    list and extract elements within that sublist, or sublist of sublists of sublists,
+    in terms of the experiment object!
+
+
+- Class: video
+  Output: We used the `experiment$experimental_data[1]$call_data$raw` expression to retrieve
+    the raw data for the first dataset, in order to graph the ethnogram. At this point,
+    it may be useful to go to the SqueakR website and learn more about the $ operator,
+    as well as the "Data Structure" section to learn more about how the experiment
+    object is structured.
+  VideoLink: https://osimon81.github.io/SqueakR/articles/SqueakR.html#operator-in-squeakr
+
+- Class: text
+  Output: The [1] in square brackets referred to the number of the dataset we wanted to
+    retrieve from in our experimental_data sublist. In other words, this is similar to
+    our "n" in the remove_experiment_data() function. Changing [1] to [2] here would
+    graph the ethnogram for our second dataset (remember, the afterdrug dataset)!
+
+- Class: cmd_question
+  Output: Let's do that for our afterdrug dataset, then!
+  CorrectAnswer: plotEthnogram(experiment$experimental_data[2]$call_data$raw)
+  AnswerTests: omnitest(correctExpr='plotEthnogram(experiment$experimental_data[2]$call_data$raw)')
+  Hint: Run `plotEthnogram(experiment$experimental_data[2]$call_data$raw)` in the console.
+
+- Class: cmd_question
+  Output: We can plot a whole range of graphs using SqueakR. Try running the following
+    function, `plotDensityStackedByFrequency(experiment$experimental_data[2]$call_data$raw, chosen_group = 100)`...
+  CorrectAnswer: plotDensityStackedByFrequency(experiment$experimental_data[2]$call_data$raw, chosen_group = 100)
+  AnswerTests: omnitest(correctExpr='plotDensityStackedByFrequency(experiment$experimental_data[2]$call_data$raw, chosen_group = 100)')
+  Hint: Run `plotDensityStackedByFrequency(experiment$experimental_data[2]$call_data$raw, chosen_group = 100)` in the console.
+
+- Class: cmd_question
+  Output: The graph you just plotted is for our `afterdrug` dataset, and the plot groups
+    calls that are in the same frequency range together. We can see that in the
+    ~132-150 second region of our afterdrug timepoint, the proportion of 100 kHz
+    calls increases dramatically! Let's try comparing this to our `beforedrug` dataset
+    by changing the number in square brackets...
+  CorrectAnswer: plotDensityStackedByFrequency(experiment$experimental_data[1]$call_data$raw)
+  AnswerTests: omnitest(correctExpr='plotDensityStackedByFrequency(experiment$experimental_data[1]$call_data$raw)')
+  Hint: Run `plotDensityStackedByFrequency(experiment$experimental_data[1]$call_data$raw)` in the console.
+  
+- Class: text
+  Output: If we compare the two datasets, from before to after the drug was given,
+    we'll notice that it doesn't seem like any class of call predominates. Interesting!
+    Also, note in this figure that the 100 kHz call group was highlighted in the `afterdrug` plot.
+    We can emphasize calls in this way and more using SqueakR! Feel free to use the documentation
+    to explore graphs that may be useful for your analyses.
+    
+- Class: text
+  Output: We'll also see if we can find any differences between our beforedrug and afterdrug
+    timepoints. We can do this using the analyze_factor(experiment, analysis_factor) function.
+    
+- Class: cmd_question
+  Output: Try running `analyze_factor(experiment, "sinuosity")` to compare call length
+    between both groups...
+  CorrectAnswer: analyze_factor(experiment, "sinuosity")
+  AnswerTests: omnitest(correctExpr='analyze_factor(experiment, "sinuosity")')
+  Hint: Run `analyze_factor(experiment, "sinuosity")` in the console.
+  
+- Class: text
+  Output: The final visualization we'll explore here is the PDF summary. You can run
+    plotSummaryPDF(path_to_file, save_path) to make a PDF containing all visualizations
+    that SqueakR can generate for a specific dataset, and save it to a location on
+    your computer. This can be helpful when preparing reports, exploring outliers,
+    or even sharing at meetings. You can read more about this PDF functionality
+    in the documentation, as well.
+    
+
+- Class: text
+  Output: Amazing. You did it! Now, let's move on to the final lesson, Advanced SqueakR.

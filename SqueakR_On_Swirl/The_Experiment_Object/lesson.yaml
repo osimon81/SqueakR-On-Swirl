@@ -1,0 +1,188 @@
+- Class: meta
+  Course: SqueakR On Swirl
+  Lesson: The Experiment Object
+  Author: Simon Ogundare
+  Type: Standard
+  Organization: Columbia University
+  Version: 2.4.5
+
+- Class: text
+  Output: You may or may not have heard that R is an object-oriented language. SqueakR
+    relies on this phrase to create the most important file of this package,
+    the experiment object.
+
+- Class: text
+  Output: The experiment object, in terms of SqueakR, is a list. Specifically, it's a list
+    of lists, each list containing some crucial information about our experiment.
+
+- Class: text
+  Output: We can create a new experiment using the create_experiment() function.
+    create_experiment() requires one parameter, the name of the experiment (which
+    we'll put in quotes").
+
+- Class: cmd_question
+  Output: Create an experiment "My_New_Experiment", and assign it
+    to a variable called experiment (feel free to pull up the documentation for this
+    function on the SqueakR website, or with "?create_experiment" here on the
+    console, if you're stuck)...
+  CorrectAnswer: experiment <- create_experiment("My_New_Experiment")
+  AnswerTests: omnitest(correctExpr='experiment <- create_experiment("My_New_Experiment")')
+  Hint: Use 'experiment <- create_experiment("My_New_Experiment")' to accomplish this!
+
+- Class: text
+  Output: We've created our experiment! Let's see how the experiment is structured using
+    another SqueakR function, describe_experiment(). This function takes one parameter,
+    our experiment object (which we've called `experiment`).
+
+- Class: cmd_question
+  Output: Run the describe_experiment() function (and check the documentation website if
+    you're stuck!)...
+  CorrectAnswer: describe_experiment(experiment)
+  AnswerTests: omnitest(correctExpr='describe_experiment(experiment)')
+  Hint: describe_experiment(experiment)
+
+- Class: text
+  Output: Before we get any further into the experiment object, it's important to realize
+    some key differences between calling a function and assigning a function to an
+    object.
+
+- Class: text
+  Output: When we run code like `experiment <- create_experiment("My_New_Experiment")`,
+    we are defining the experiment object as whatever create_experiment() results in.
+    Since create_experiment() generates a list, the experiment object is defined as
+    this list.
+
+- Class: text
+  Output: On the other hand, when we run code like `describe_experiment(experiment)`,
+    without the use of the '<-' operator, we aren't overwriting the object itself
+    with new information. We're usually just retrieving some information about it.
+
+- Class: text
+  Output: To make this more intuitive, when we don't see the <- operator (the assignment
+    operator), we know that we aren't assigning a new value to that object. We're
+    usually just retrieving information about it.
+
+- Class: mult_question
+  Output: With this in mind, would I use a <- operator if I wanted to update certain values
+    in the experiment object with new ones?
+  AnswerChoices: Yes;No
+  CorrectAnswer: Yes
+  AnswerTests: omnitest(correctVal='Yes')
+  Hint: Are we changing information for that object, or just retrieving information from
+    it?
+
+- Class: mult_question
+  Output: Would I use a <- operator if I wanted to see how many datasets were stored in my
+    experiment?
+  AnswerChoices: Yes;No
+  CorrectAnswer: No
+  AnswerTests: omnitest(correctVal='No')
+  Hint: Are we changing information for that object, or just retrieving information from
+    it?
+
+- Class: text
+  Output: Now that we've seen the structure of our experiment, let's add some data to it.
+
+- Class: text
+  Output: There's an example dataset stored in SqueakR which we'll use to add some sample
+    data to our experiment.
+
+- Class: cmd_question
+  Output: Let's access it by running `data(deepsqueak_data)` in the
+    console below. Also, think about why we use the `<-` operator here...
+  CorrectAnswer: data(deepsqueak_data)
+  AnswerTests: omnitest(correctExpr='data(deepsqueak_data)')
+  Hint: Run `data(deepsqueak_data)` in the console.
+
+- Class: text
+  Output: This dataset was generated from DeepSqueak after detecting 714 mouse vocalizations
+    over a ~5 minute recording.
+
+- Class: text
+  Output: Let's say we're running a within-groups design where the data we just retrieved
+    corresponds to mice which are treated with a chemical of interest at t = 92
+    seconds. In this case, we can use one dataset (like the one we have loaded!) to
+    extract calls both before giving the drug and after giving the drug.
+
+- Class: text
+  Output: Let's say we want to buffer the t = 92 second region by around 10 seconds, to
+    compensate for vocalizations made when handling the mouse and during injections.
+    In effect, we'd want to retrieve calls from 0 to 82 seconds (for the "before drug"
+    timepoint), and from 92 seconds onwards (for the "after drug" timepoint). So
+    we retrieve the same lengths of time between groups, our "after drug" timepoints
+    will be 92 to 174 seconds.
+
+- Class: cmd_question
+  Output: Retrieve the before drug timepoint by running `beforedrug <- add_timepoint_data(data_path = deepsqueak_data, t1 = 0, t2 = 82)`...
+  CorrectAnswer: beforedrug <- add_timepoint_data(data_path = deepsqueak_data, t1 = 0, t2 = 82)
+  AnswerTests: omnitest(correctExpr='beforedrug <- add_timepoint_data(data_path = deepsqueak_data, t1 = 0, t2 = 82)')
+  Hint: Run `beforedrug <- add_timepoint_data(data_path = deepsqueak_data, t1 = 0, t2 = 82)` in your console.
+
+- Class: cmd_question
+  Output: Let's do the same for the after-drug condition. Assign the 92 to 174 second period
+    to a variable called `afterdrug`...
+  CorrectAnswer: afterdrug <- add_timepoint_data(data_path = deepsqueak_data, t1 = 92, t2 = 174)
+  AnswerTests: omnitest(correctExpr='afterdrug <- add_timepoint_data(data_path = deepsqueak_data, t1 = 92, t2 = 174)')
+  Hint: Run `afterdrug <- add_timepoint_data(data_path = deepsqueak_data, t1 = 92, t2 = 174)` in the console.
+
+- Class: text
+  Output: Now that our raw data is selected and loaded, we can process it. We'll start by
+    computing some summary statistics on the `beforedrug` and `afterdrug` datasets,
+    by running the `score_timepoint_data()` function.
+
+- Class: cmd_question
+  Output: Score our `beforedrug` dataset using the <- operator, assigning it to a group
+    called "Before", and an experimenter named "Me"...
+  CorrectAnswer: beforedrug <- score_timepoint_data(beforedrug, "Before", "Me")
+  AnswerTests: omnitest(correctExpr='beforedrug <- score_timepoint_data(beforedrug, "Before", "Me")')
+  Hint: Run `beforedrug <- score_timepoint_data(beforedrug, "Before", "Me")` in the console.
+
+- Class: cmd_question
+  Output: Now, let's do the same with our `afterdrug` dataset, but assign this one to a
+    group called "After", and an experimenter named "You"...
+  CorrectAnswer: afterdrug <- score_timepoint_data(afterdrug, "After", "You")
+  AnswerTests: omnitest(correctExpr='afterdrug <- score_timepoint_data(afterdrug, "After", "You")')
+  Hint: Run `afterdrug <- score_timepoint_data(afterdrug, "After", "You")` in the console.
+
+- Class: text
+  Output: Notice how we just used the assignment operator (<-) to overwrite the beforedrug
+    and afterdrug raw datasets with the processed data. This was done just to save
+    environment space, so we don't create too many variables at one time, but we
+    could have assigned the function to another object, like `scored_afterdrug`, for
+    instance.
+
+- Class: cmd_question
+  Output: Next, add the scored `beforedrug` dataset to your experiment by running
+    experiment <- add_to_experiment(experiment, beforedrug)...
+  CorrectAnswer: experiment <- add_to_experiment(experiment, beforedrug)
+  AnswerTests: omnitest(correctExpr='experiment <- add_to_experiment(experiment, beforedrug)')
+  Hint: Run `experiment <- add_to_experiment(experiment, beforedrug)` in the console.
+
+- Class: cmd_question
+  Output: Finally, let's add the `afterdrug` dataset to your experiment...
+  CorrectAnswer: experiment <- add_to_experiment(experiment, afterdrug)
+  AnswerTests: omnitest(correctExpr='experiment <- add_to_experiment(experiment, afterdrug)')
+  Hint: Run `experiment <- add_to_experiment(experiment, afterdrug)` in the console.
+
+- Class: cmd_question
+  Output: We've successfully added two datasets to our experiment! Let's see what our
+    experiment object looks like now by running `describe_experiment(experiment)`...
+  CorrectAnswer: describe_experiment(experiment)
+  AnswerTests: omnitest(correctExpr='describe_experiment(experiment)')
+  Hint: Run `describe_experiment(experiment)` in the console.
+
+- Class: text
+  Output: You're doing great! If you want to remove a dataset, you can do so by running
+    experiment <- remove_experiment_data(experiment, n). n corresponds to the number
+    of the dataset you want removed. In other words, if n = 1, the first dataset we
+    added (our `beforedrug` dataset) will be removed. We don't want this, so let's
+    move on!
+
+- Class: text
+  Output: We also have the option of saving our experiment to a location on our computer,
+    (so we can access it later) using `save_experiment(experiment, save_path)`.
+    In this function, save_path corresponds to the full path to the folder you want to save
+    the experiment object to (in "quotes").
+
+- Class: text
+  Output: You did it! Let's move on to the third lesson.

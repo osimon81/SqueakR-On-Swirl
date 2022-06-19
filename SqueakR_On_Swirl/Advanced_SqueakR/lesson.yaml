@@ -1,0 +1,55 @@
+- Class: meta
+  Course: SqueakR On Swirl
+  Lesson: Advanced SqueakR
+  Author: Simon Ogundare
+  Type: Standard
+  Organization: Columbia University
+  Version: 2.4.5
+
+- Class: text
+  Output: Now that we've learned about data retrieval, subsetting data into our experiment,
+    and plotting it, let's try making our lives a little easier.
+
+- Class: text
+  Output: The pipeline functions in SqueakR are among the more powerful functions in the
+    package, and they allow us to bypass manually running add_timepoint_data() >
+    score_timepoint_data() > add_to_experiment() for every single file we want to add.
+
+
+- Class: video
+  Output: The SqueakR website has complete documentation for both the semi-automatic pipeline
+    and the automatic pipeline, but we'll learn about what each of them mean now.
+  VideoLink: https://osimon81.github.io/SqueakR/articles/SqueakR.html#experiment-pipelines
+
+- Class: text
+  Output: Both pipelines, semisqueakRpipeline() and autosqueakRpipeline(), will prompt you
+    to enter the full path to your folder containing all of your data. The difference
+    between the two pipelines is that semisqueakRpipeline (the semi-automatic pipeline)
+    will loop over every file in that folder, prompting you to enter an experimental group, experimenter name, and starting and
+    ending timepoints (t1 and t2) for call extraction for each file.
+
+
+- Class: text
+  Output: The automatic pipeline will also loop over the same folder of DeepSqueak files, but
+    will retrieve all the metadata necessary for subsetting the data from an external
+    Google Sheet you'll write which contains inforamtion about experimental group,
+    t1 and t2, experimenter name, and the filename (including the extension).
+
+- Class: text
+  Output: There are a few rules for this Google Sheet, namely that (1) The sheet accessed
+    by SqueakR is organized by columns, (2) Each column represents the filename,
+    experimental group, experimenter, start time-point, and end time-point for a call dataset,
+    and (3) The filename column matches the full name of the corresponding data file exactly
+    (including the extension). Other than these rules, the Sheet can be organized according to
+    whatever conventions are most suitable for the experimenter.
+
+- Class: video
+  Output: Information about these functions and more can be found in the Reference section
+    of the SqueakR website, including what variables each function requires, and
+    examples of use.
+  VideoLink: https://osimon81.github.io/SqueakR/reference/index.html
+
+- Class: video
+  Output: You're fully trained to use SqueakR! If you have any further questions, suggestions,
+    or comments about the package, refer to the GitHub Discussions page for SqueakR.
+  VideoLink: https://github.com/osimon81/SqueakR/discussions
