@@ -1,3 +1,0 @@
-library(SqueakR)
-
-plotDensityStackedByFrequency(experiment$experimental_data[2]$call_data$raw)
